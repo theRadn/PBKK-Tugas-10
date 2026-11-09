@@ -6,15 +6,39 @@ use App\Models\Project;
 use App\Models\User;
 use Database\Factories\ProjectFactory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash; // Import Hash
+use Spatie\Permission\Models\Role;
 
 class StudentUserSeeder extends Seeder
 {
     public function run(): void
     {
-        $students = User::factory()->count(15)->create();
+        // Ensure Staf role exists
+        $stafRole = Role::firstOrCreate(['name' => 'Staf']);
+
+        $demoStudent = User::updateOrCreate(
+            ['email' => 'mahasiswa@its.ac.id'],
+            [
+                'name' => 'Budi Santoso (Mahasiswa)',
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ]
+        );
+        $demoStudent->assignRole($stafRole);
 
         if (class_exists(ProjectFactory::class)) {
-            $students->each(fn (User $user) => Project::factory()->count(2)->create(['user_id' => $user->id]));
+            // Seed exactly 12 projects for the main demo student
+            Project::factory()->count(12)->create(['user_id' => $demoStudent->id]);
+        }
+
+        $randomStudents = User::factory()->count(15)->create();
+
+        if (class_exists(ProjectFactory::class)) {
+            $randomStudents->each(function (User $user) use ($stafRole) {
+                $user->assignRole($stafRole);
+
+                Project::factory()->count(2)->create(['user_id' => $user->id]);
+            });
         }
     }
 }

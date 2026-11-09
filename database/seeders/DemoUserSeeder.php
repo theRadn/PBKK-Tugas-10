@@ -7,6 +7,7 @@ use App\Models\User;
 use Database\Factories\ProjectFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class DemoUserSeeder extends Seeder
 {
@@ -22,8 +23,7 @@ class DemoUserSeeder extends Seeder
             ]
         );
 
-        if (class_exists(ProjectFactory::class)) {
-            Project::factory()->count(4)->create(['user_id' => $demo->id]);
-        }
+        $adminRole = Role::firstOrCreate(['name' => 'Admin']);
+        $demo->assignRole($adminRole);
     }
 }

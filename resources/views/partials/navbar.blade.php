@@ -1,33 +1,9 @@
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 dark:bg-slate-950/90 dark:border-slate-800 transition-colors duration-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
-        <!-- Navigation Links --> 
+        <!-- Navigation Links -->
         <nav class="mx-auto">
             <ul class="flex items-center space-x-8 text-sm font-semibold">
-                <li>
-                    <a href="{{ route('beranda') }}"
-                        class="py-2 transition duration-200 {{ request()->routeIs('beranda') ? 'text-[#0055B8] border-b-2 border-[#0055B8] font-bold dark:text-blue-400 dark:border-blue-400' : 'text-slate-600 hover:text-blue-400 dark:text-slate-400 dark:hover:text-blue-400' }}">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('mahasiswa.detail') }}"
-                        class="py-2 transition duration-200 {{ request()->routeIs('mahasiswa.detail') ? 'text-[#0055B8] border-b-2 border-[#0055B8] font-bold dark:text-blue-400 dark:border-blue-400' : 'text-slate-600 hover:text-blue-400 dark:text-slate-400 dark:hover:text-blue-400' }}">
-                        Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.idea') }}"
-                        class="py-2 transition duration-200 {{ request()->routeIs('agent.idea') ? 'text-[#0055B8] border-b-2 border-[#0055B8] font-bold dark:text-blue-400 dark:border-blue-400' : 'text-slate-600 hover:text-blue-400 dark:text-slate-400 dark:hover:text-blue-400' }}">
-                        Agent
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('dashboard') }}"
-                        class="py-2 transition duration-200 {{ request()->routeIs('dashboard') ? 'text-[#0055B8] border-b-2 border-[#0055B8] font-bold dark:text-blue-400 dark:border-blue-400' : 'text-slate-600 hover:text-blue-400 dark:text-slate-400 dark:hover:text-blue-400' }}">
-                        Dashboard
-                    </a>
-                </li>
             </ul>
         </nav>
 

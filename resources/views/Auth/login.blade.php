@@ -14,19 +14,29 @@
 
             {{-- Demo Account Quick Action --}}
             <div class="mb-6 p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/80 border border-blue-100 dark:border-slate-700 shadow-sm">
-                <div class="flex items-start justify-between gap-3">
+                <div class="flex flex-col gap-3">
                     <div>
                         <div class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0055B8] dark:text-blue-400">
                             <i class="fa-solid fa-sparkles"></i> Akun Demo Tersedia
                         </div>
                         <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
-                            Gunakan akun demo terisi project: <strong class="text-slate-800 dark:text-white">dosenpbkk@its.ac.id</strong>
+                            Pilih akun demo di bawah ini untuk mencoba fitur RBAC:
                         </p>
                     </div>
-                    <button type="button" onclick="fillDemo()"
-                        class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#0055B8] text-white hover:bg-blue-700 transition shadow-sm whitespace-nowrap">
-                        Gunakan Demo
-                    </button>
+
+                    <div class="flex gap-2 w-full mt-1">
+                        <!-- Tombol Demo Dosen (Admin) -->
+                        <button type="button" onclick="fillDemo('dosenpbkk@its.ac.id')"
+                            class="flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-[#0055B8] text-white hover:bg-blue-700 transition shadow-sm whitespace-nowrap flex items-center justify-center gap-1.5 cursor-pointer">
+                            <i class="fa-solid fa-user-shield cursor"></i> Admin (Dosen)
+                        </button>
+
+                        <!-- Tombol Demo Mahasiswa (Staf) -->
+                        <button type="button" onclick="fillDemo('mahasiswa@its.ac.id')"
+                            class="flex-1 px-3 py-2 text-xs font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-sm whitespace-nowrap flex items-center justify-center gap-1.5 cursor-pointer">
+                            <i class="fa-solid fa-user-graduate"></i> Staf (Mahasiswa)
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -94,8 +104,8 @@
     </section>
 
     <script>
-        function fillDemo() {
-            document.getElementById('email').value = 'dosenpbkk@its.ac.id';
+        function fillDemo(email) {
+            document.getElementById('email').value = email;
             document.getElementById('password').value = 'password';
         }
 
